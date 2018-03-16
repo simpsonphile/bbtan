@@ -1,6 +1,17 @@
 canvas = document.querySelector('#canvas');
 c = canvas.getContext('2d');
 
+function resize(){
+  if(window.innerWidth>window.innerHeight){
+    canvas.style.width="auto";
+    canvas.style.height="100%";
+  } else {
+    canvas.style.width="100%";
+    canvas.style.height="auto";
+  }
+}
+window.addEventListener('resize', resize);
+resize();
 var player;
 var balls;
 var squares;
@@ -23,10 +34,10 @@ var spawnSquares = function(){
     if(Math.random()>0.75){
       points.push(new Point(25+45*i,30));
     }
-    else if(Math.random()>0.7){
+    else if(Math.random()>0.5){
       squares.push(new Square(5+45*i,10,player.balls,'#b10'));
     }
-    else if(Math.random()>0.7){
+    else if(Math.random()>0.5){
       squares.push(new Square(5+45*i,10,player.balls*2,'#00f'));
     }
 }
